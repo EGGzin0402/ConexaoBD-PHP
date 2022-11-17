@@ -1,193 +1,123 @@
 <?php
 
-include_once "conectar.php"; 
+include_once "c:\\xampp\htdocs\Acesso_BD\BD_Escola\Controler\conectar.php";
 
 class Disciplina
-
 {
-
     private $coddisc;
     private $nome;
     private $conn;
 
-    public function getCodDisc(){
-
-        return $this->coddisc;
-
-    }
-
-    public function setCodDisc($coddisc){
-        
-        $this->coddisc = $coddisc;
-
-    }
-    
-    public function getNome(){
-
-        return $this->nome;
-
-    }
-
-    public function setNome($nome){
-        
-        $this->nome = $nome;
-
-    }
-
-    function SalvarDisciplina()
+    public function getCodDisc()
     {
+        return $this->coddisc;
+    }
 
-        try{
+    public function setCodDisc($coddisc)
+    {
+        $this->coddisc = $coddisc;
+    }
 
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+    }
+
+    public function SalvarDisciplina()
+    {
+        try {
             $this->conn = new Conectar();
             $sql = $this->conn->prepare("insert into disciplinas values (?, ?)");
             @$sql->bindParam(1, $this->getCodDisc(), PDO::PARAM_STR);
             @$sql->bindParam(2, $this->getNome(), PDO::PARAM_STR);
-            if ($sql->execute() == 1)
-            {
-
+            if ($sql->execute() == 1) {
                 return "Registro salvo com sucesso!";
-
             }
             $this->conn = null;
-        }
-        catch (PDOException $exc)
-        {
-
+        } catch (PDOException $exc) {
             echo "Erro ao salvar o registro. " . $exc->getMessage();
-
         }
-
     }
 
-    function ListarDisciplina()
+    public function ListarDisciplina()
     {
-
-        try{
-
+        try {
             $this->conn = new Conectar();
             $sql = $this->conn->query("select * from disciplinas order by CodDisciplina");
             $sql->execute();
             return $sql->fetchAll();
             $this->conn = null;
-
-        }
-        catch(PDOException $exc)
-        {
-
+        } catch(PDOException $exc) {
             echo "Erro ao executar a consulta. " . $exc->getMessage();
-
         }
-
     }
 
-    function ExcluirDisciplina()
+    public function ExcluirDisciplina()
     {
-
-        try{
-
+        try {
             $this->conn = new Conectar();
             $sql = $this->conn->prepare("delete from disciplinas where CodDisciplina = ?");
             @$sql->bindParam(1, $this->getCodDisc(), PDO::PARAM_STR);
-            
-            if ($sql->execute() == 1)
-            {
 
+            if ($sql->execute() == 1) {
                 return "Excluído com sucesso!";
-
-            }
-            else
-            {
-
+            } else {
                 return "Erro na exclusão";
-
             }
 
             $this->conn = null;
-
-        }
-        catch(PDOException $exc)
-        {
-
+        } catch(PDOException $exc) {
             echo "Erro ao excluir. " . $exc->getMessage();
-
         }
-
     }
 
-    function ConsultarDisciplina()
+    public function ConsultarDisciplina()
     {
-
-        try{
-
+        try {
             $this->conn = new Conectar();
             $sql = $this->conn->prepare("select * from disciplinas where NomeDisciplina like ?");
             @$sql->bindParam(1, $this->getNome(), PDO::PARAM_STR);
             $sql->execute();
             return $sql->fetchAll();
             $this->conn = null;
-
-        }
-        catch(PDOException $exc){
-
+        } catch(PDOException $exc) {
             echo "Erro ao executar a consulta. " . $exc->getMessage();
-
         }
-
     }
 
-    function Alterar()
+    public function Alterar()
     {
-        try
-        {
-
+        try {
             $this->conn = new Conectar();
             $sql = $this->conn->prepare("select * from disciplinas where CodDisciplina = ?");
             @$sql->bindParam(1, $this->getCodDisc(), PDO::PARAM_STR);
             $sql->execute();
             return $sql->fetchAll();
             $this->conn = null;
-    
-        }
-
-        catch (PDOException $exc){
-
+        } catch (PDOException $exc) {
             echo "Erro ao alterar. " . $exc->getMessage();
-    
         }
-    
-
     }
 
-    function Alterar2()
+    public function Alterar2()
     {
-
-        try{
-
+        try {
             $this->conn = new Conectar();
             $sql = $this->conn->prepare("update disciplinas set NomeDisciplina = ? where coddisciplina = ?");
             @$sql->bindParam(1, $this->getNome(), PDO::PARAM_STR);
             @$sql->bindParam(2, $this->getCodDisc(), PDO::PARAM_STR);
 
-            if ($sql->execute() == 1)
-            {
-
+            if ($sql->execute() == 1) {
                 return "Registro alterado com sucesso!";
-
             }
             $this->conn = null;
-
-        }
-        catch (PDOException $exc)
-        {
-
+        } catch (PDOException $exc) {
             echo "Erro ao salvar o registro. " . $exc->getMessage();
-
         }
-
-
     }
-
 }
-
-?>

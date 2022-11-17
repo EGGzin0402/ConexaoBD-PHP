@@ -9,25 +9,56 @@
 
 .sidebar {
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
   width: 260px;
   background: #383d3b;
+  border-radius: 15px;
+}
+
+.sidebar .logo-details {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .logo-details ion-icon {
+  font-size: 30px;
+  color: #fff;
+  height: 50px;
+  min-width: 78px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.sidebar .logo-details .logo_name {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s ease;
+  transition-delay: 0.1s;
 }
 
 .sidebar .nav-links {
   height: 100%;
-  padding: 30px 20 150px 10;
+  padding: 30px 0 150px 0;
   overflow: auto;
 }
 
 .sidebar .nav-links li {
   position: relative;
   list-style: none;
+  transition: all 0.4s ease;
+}
+
+.sidebar .nav-links li:hover {
+  background: #7c7c7c;
 }
 
 .sidebar .nav-links li .iocn-links {
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,10 +66,13 @@
 
 .sidebar .nav-links li ion-icon {
   height: 30px;
-  min-width: 50px;
+  min-width: 78px;
   text-align: center;
   line-height: 50px;
   color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .sidebar .nav-links li a {
@@ -47,8 +81,28 @@
   text-decoration: none;
 }
 
-.sidebar .nav-links li a .title {
+.sidebar .nav-links li a .link_name {
   font-size: 18px;
   font-weight: 400;
   color: #fff;
+  transition: all 0.4s ease;
+}
+
+.sidebar .nav-links li .submenu {
+  padding: 6px 6px 14px 80px;
+  margin-top: 0px;
+  background: #7c7c7c;
+}
+
+.sidebar .nav-links li .submenu a {
+  color: #fff;
+  font-size: 15px;
+  padding: 5px 0;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.sidebar .nav-links li .submenu a:hover {
+  opacity: 1;
 }

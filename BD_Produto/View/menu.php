@@ -113,7 +113,7 @@
 
           </form>
 
-          
+
 
         </div>
 
@@ -124,25 +124,24 @@
 
     <div class="card border-0" style="width: 70rem; left: 400px; top: 20px;" id="ResultCadastrar">
 
-            <?php
+      <?php
 
             extract($_POST, EXTR_OVERWRITE);
-            if (isset($btenviarcad)) {
+      if (isset($btenviarcad)) {
+          ?>
 
-              ?>
+      <legend><b> Resultado da Consulta: </b></legend>
 
-              <legend><b> Resultado da Consulta: </b></legend>
+      <?php
 
-              <?php
+            include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+          $pro = new Produto();
+          $pro->setNome($txtnomecad);
+          $pro->setEstoque($txtestoq);
+          echo '<h3><br><br>' . $pro->salvar() . '</h3>';
+      }
 
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
-                $pro = new Produto();
-                $pro->setNome($txtnomecad);
-                $pro->setEstoque($txtestoq);
-                echo '<h3><br><br>' . $pro->salvar() . '</h3>';
-            }
-
-            ?>
+      ?>
 
     </div>
 
@@ -182,28 +181,27 @@
 
     <div class="card border-0" style="width: 70rem; left: 400px; top: 20px;" id="ResultExcluir">
 
-      <div class= "card-body">
+      <div class="card-body">
 
-      
+
 
         <?php
 
-              extract($_POST, EXTR_OVERWRITE);
-        if (isset($btenviarexc)) {
-
+        extract($_POST, EXTR_OVERWRITE);
+      if (isset($btenviarexc)) {
           ?>
 
-          <legend><b> Resultado do Excluir: </b></legend>
+        <legend><b> Resultado do Excluir: </b></legend>
 
-          <?php
+        <?php
           include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
 
           $pro = new Produto();
           $pro->setId($txtIDexc);
           echo '<h3>' . $pro->Exclusao() . '</h3>';
-        }
+      }
 
-        ?>
+      ?>
 
       </div>
 
@@ -237,7 +235,7 @@
 
             </div>
             <br>
-            
+
 
           </form>
 
@@ -249,55 +247,55 @@
 
     <div class="card border-0" style="width: 70rem; left: 400px; top: 20px;" id="ResultConsultar">
 
-            <div class= "card-body">
+      <div class="card-body">
 
-              <?php
+        <?php
 
-              extract($_POST, EXTR_OVERWRITE);
-            if (isset($btenviarcon)) {
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
-                $pro = new Produto();
-                $pro->setNome($txtnomecons . '%');
-                $pro_bd = $pro->Consultar();
+            extract($_POST, EXTR_OVERWRITE);
+      if (isset($btenviarcon)) {
+          include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+          $pro = new Produto();
+          $pro->setNome($txtnomecons . '%');
+          $pro_bd = $pro->Consultar();
 
-                ?>
+          ?>
 
-              <legend><b> Resultado da Consulta: </b></legend>
+        <legend><b> Resultado da Consulta: </b></legend>
 
-              <table class="table table-striped-columns table-hover table-bordered">
+        <table class="table table-striped-columns table-hover table-bordered">
 
-                <thead>
-                  <tr>
-                    <th class="table-success border-0" scope="col">ID</th>
-                    <th class="table-success border-0" scope="col">Nome</th>
-                    <th class="table-success border-0" scope="col">Estoque</th>
-                  </tr>
-                </thead>
+          <thead>
+            <tr>
+              <th class="table-success border-0" scope="col">ID</th>
+              <th class="table-success border-0" scope="col">Nome</th>
+              <th class="table-success border-0" scope="col">Estoque</th>
+            </tr>
+          </thead>
 
-                <tbody>
+          <tbody>
 
-                  <?php
+            <?php
 
-                        foreach ($pro_bd as $pro_mostrar) {
-                            ?>
-                  <tr>
-                    <td><?php echo $pro_mostrar[0]; ?></td>
-                    <td><?php echo $pro_mostrar[1]; ?></td>
-                    <td><?php echo $pro_mostrar[2]; ?></td>
-                  </tr>
+                  foreach ($pro_bd as $pro_mostrar) {
+                      ?>
+            <tr>
+              <td><?php echo $pro_mostrar[0]; ?></td>
+              <td><?php echo $pro_mostrar[1]; ?></td>
+              <td><?php echo $pro_mostrar[2]; ?></td>
+            </tr>
 
-                  <?php
+            <?php
 
-                        }
-                ?>
+                  }
+          ?>
 
-              </table>
+        </table>
 
-              <?php
+        <?php
 
-            }
+      }
 
-            ?>
+      ?>
 
       </div>
 
@@ -315,11 +313,11 @@
 
           <?php
 
-            include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
-            $p = new Produto();
-            $pro_bd = $p->Listar();
+      include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+      $p = new Produto();
+      $pro_bd = $p->Listar();
 
-            ?>
+      ?>
 
           <table class="table table-striped-columns table-hover table-bordered">
 
@@ -334,16 +332,16 @@
             <tbody>
 
               <?php
-                foreach ($pro_bd as $pro_mostrar) {
-                    ?>
+          foreach ($pro_bd as $pro_mostrar) {
+              ?>
               <tr>
                 <td><?php echo $pro_mostrar[0]; ?></td>
                 <td><?php echo $pro_mostrar[1]; ?></td>
                 <td><?php echo $pro_mostrar[2]; ?></td>
               </tr>
               <?php
-                }
-            ?>
+          }
+      ?>
             </tbody>
 
           </table>
@@ -392,66 +390,66 @@
 
     <div class="card border-0" style="width: 70rem; left: 400px; top: 20px;" id="ResultAlterar1">
 
-      <div class= "card-body">
+      <div class="card-body">
 
-            <?php
+        <?php
 
-                    if (isset($btenviaralt)) {
-                        $txtid = $_POST['txtidalt1'];
-                        include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
-                        $p = new Produto();
-                        $p->setId($txtid);
-                        $pro_bd = $p->alterar();
+              if (isset($btenviaralt)) {
+                  $txtid = $_POST['txtidalt1'];
+                  include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+                  $p = new Produto();
+                  $p->setId($txtid);
+                  $pro_bd = $p->alterar();
 
-                        ?>
+                  ?>
 
-            <legend><b> Alterar: </b></legend>
+        <legend><b> Alterar: </b></legend>
 
-            <form name="cliente2" method="POST" action="">
+        <form name="cliente2" method="POST" action="">
 
-              <?php
+          <?php
 
-                        foreach ($pro_bd as $pro_mostrar) {
-                            ?>
+                  foreach ($pro_bd as $pro_mostrar) {
+                      ?>
 
-              <label for="exampleInputEmail1" class="form-label"> ID: </label>
-              <input class="form-control" name="txtidalt2" type="text" size="5"
-                value='<?php echo $pro_mostrar[0]?>' readonly><br>
-              <label for="exampleInputEmail1" class="form-label"> Nome: </label>
-              <input class="form-control" name="txtnome" type="text" size="40" maxlength="40"
-                value='<?php echo $pro_mostrar[1]?>'><br>
-              <label for="exampleInputEmail1" class="form-label"> Estoque: </label>
-              <input class="form-control" name="txtestoq" type="text" size="25" maxlength="40"
-                value='<?php echo $pro_mostrar[2]?>'><br>
-              <input type="submit" name="btnalterar" class="btn btn-success" value="Alterar">
+          <label for="exampleInputEmail1" class="form-label"> ID: </label>
+          <input class="form-control" name="txtidalt2" type="text" size="5"
+            value='<?php echo $pro_mostrar[0]?>' readonly><br>
+          <label for="exampleInputEmail1" class="form-label"> Nome: </label>
+          <input class="form-control" name="txtnome" type="text" size="40" maxlength="40"
+            value='<?php echo $pro_mostrar[1]?>'><br>
+          <label for="exampleInputEmail1" class="form-label"> Estoque: </label>
+          <input class="form-control" name="txtestoq" type="text" size="25" maxlength="40"
+            value='<?php echo $pro_mostrar[2]?>'><br>
+          <input type="submit" name="btnalterar" class="btn btn-success" value="Alterar">
 
-              <?php
+          <?php
 
-                        }
-                    }
+                  }
+              }
 
-            ?>
+      ?>
 
-            </form>
+        </form>
 
-          </div>
+      </div>
 
     </div>
 
-    <div class="card border-0" style="width: 70rem; left: 400px; top: 20px;" id="ResultAlterar1">
+    <div class="card border-0" style="width: 70rem; left: 400px; top: 20px;" id="ResultAlterar2">
 
-      <div class= "card-body">
+      <div class="card-body">
 
-      <?php
+        <?php
       extract($_POST, EXTR_OVERWRITE);
-            if (isset($btnalterar)) {
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
-                $pro = new Produto();
-                $pro->setNome($txtnome);
-                $pro->setEstoque($txtestoq);
-                $pro->setId($txtidalt2);
-                echo '<br><br><h3>' . $pro->alterar2() . '</h3>';
-            }
+      if (isset($btnalterar)) {
+          include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+          $pro = new Produto();
+          $pro->setNome($txtnome);
+          $pro->setEstoque($txtestoq);
+          $pro->setId($txtidalt2);
+          echo '<br><br><h3>' . $pro->alterar2() . '</h3>';
+      }
 
       ?>
 
