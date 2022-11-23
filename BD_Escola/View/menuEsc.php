@@ -14,6 +14,37 @@
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
         </script>
         <script sr c="https://code.jquery.com/jquery-3.0.0.min.js%22%3E"></script>
+
+        <script language="javascript">
+            function blockletras(keypress) {
+
+                if (keypress >= 48 && keypress <= 57) {
+
+                    return true;
+
+                } else {
+
+                    return false;
+
+                }
+
+            }
+
+            function blocknum(keypress) {
+
+                if (keypress >= 48 && keypress <= 57) {
+
+                    return false;
+
+                } else {
+
+                    return true;
+
+                }
+
+            }
+        </script>
+
     </head>
 
     <body>
@@ -214,12 +245,12 @@
 
                             <legend><b> Dados do Aluno: </b></legend>
                             <label for="exampleInputEmail1" class="form-label"> Matrícula: </label>
-                            <input class="form-control" name="txtmat" type="text" size="5" maxlength="5"
-                                placeholder="0">
+                            <input class="form-control" name="txtmat" type="text" size="5" maxlength="5" placeholder="0"
+                                onkeypress="return blockletras(window.event.keyCode)">
                             <br>
                             <label for="exampleInputEmail1" class="form-label"> Nome: </label>
                             <input class="form-control" name="txtnome" type="text" size="100" maxlength="100"
-                                placeholder="Nome do Aluno">
+                                placeholder="Nome do Aluno" onkeypress="return blocknum(window.event.keyCode)">
                             <br>
                             <label for="exampleInputEmail1" class="form-label"> Endereço: </label>
                             <input class="form-control" name="txtendereco" type="text" size="50" maxlength="50"
@@ -231,7 +262,7 @@
                             <br>
                             <label for="exampleInputEmail1" class="form-label"> Curso: </label>
                             <input class="form-control" name="txtcodcurso" type="text" size="2" maxlength="2"
-                                placeholder="00">
+                                placeholder="00" onkeypress="return blockletras(window.event.keyCode)">
 
                         </div>
 
@@ -268,7 +299,7 @@
             <?php
 
 
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\aluno.php';
+                include_once '..\Models\aluno.php';
                 $pro = new Aluno();
                 $pro->setMatricula($txtmat);
                 $pro->setNome($txtnome);
@@ -301,15 +332,15 @@
                             <br>
                             <label for="exampleInputEmail1" class="form-label"> Primeira Disciplina: </label>
                             <input class="form-control" name="txtcoddisc1" type="text" size="2" maxlength="2"
-                                placeholder="00">
+                                placeholder="00" onkeypress="return blockletras(window.event.keyCode)">
                             <br>
                             <label for="exampleInputEmail1" class="form-label"> Segunda Disciplina: </label>
                             <input class="form-control" name="txtcoddisc2" type="text" size="2" maxlength="2"
-                                placeholder="00">
+                                placeholder="00" onkeypress="return blockletras(window.event.keyCode)">
                             <br>
                             <label for="exampleInputEmail1" class="form-label"> Terceira Disciplina: </label>
                             <input class="form-control" name="txtcoddisc3" type="text" size="2" maxlength="2"
-                                placeholder="00">
+                                placeholder="00" onkeypress="return blockletras(window.event.keyCode)">
 
                         </div>
 
@@ -345,7 +376,7 @@
 
             <?php
 
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\curso.php';
+                include_once '..\Models\curso.php';
                 $pro = new Curso();
                 $pro->setNome($txtnomecurso);
                 $pro->setCodDisc1($txtcoddisc1);
@@ -373,7 +404,7 @@
                             <legend><b> Dados da Disciplina: </b></legend>
                             <label for="exampleInputEmail1" class="form-label"> Código da Disciplina: </label>
                             <input class="form-control" name="txtcoddisc" type="text" size="2" maxlength="2"
-                                placeholder="00">
+                                placeholder="00" onkeypress="return blockletras(window.event.keyCode)">
                             <br>
                             <label for="exampleInputEmail1" class="form-label"> Nome: </label>
                             <input class="form-control" name="txtnomedisc" type="text" size="40" maxlength="40"
@@ -402,7 +433,7 @@
 
         </div>
 
-        <div class="card border-0" style="width: 77rem; left: 300px; top: 20px;" id="ResultCadastrarCurso">
+        <div class="card border-0" style="width: 77rem; left: 300px; top: 20px;" id="ResultCadastrarDisciplina">
 
             <?php
 
@@ -415,7 +446,7 @@
             <?php
 
 
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\disciplina.php';
+                include_once '..\Models\disciplina.php';
                 $pro = new Disciplina();
                 $pro->setCodDisc($txtcoddisc);
                 $pro->setNome($txtnomedisc);
@@ -443,7 +474,7 @@
                             <legend><b> Informe a Matrícula do Aluno desejado: </b></legend>
                             <label for="exampleInputEmail1" class="form-label"> Matrícula: </label>
                             <input class="form-control" name="txtmat" type="text" size="20" maxlength="5"
-                                placeholder="Matrícula do Aluno">
+                                placeholder="Matrícula do Aluno" onkeypress="return blockletras(window.event.keyCode)">
 
                         </div>
                         <br>
@@ -478,7 +509,7 @@
 
                 <?php
 
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\aluno.php';
+                include_once '..\Models\aluno.php';
                 $pro = new Aluno();
                 $pro->setMatricula($txtmat);
                 echo "<h3>".$pro->ExcluirAluno()."</h3>";
@@ -505,7 +536,7 @@
                             <legend><b> Informe o Código do Curso desejado: </b></legend>
                             <label for="exampleInputEmail1" class="form-label"> Código do Curso: </label>
                             <input class="form-control" name="txtcodcurso" type="text" size="20" maxlength="5"
-                                placeholder="Código do Curso">
+                                placeholder="Código do Curso" onkeypress="return blockletras(window.event.keyCode)">
 
                         </div>
                         <br>
@@ -541,7 +572,7 @@
                 <?php
 
 
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\curso.php';
+                include_once '..\Models\curso.php';
                 $pro = new Curso();
                 $pro->setCodCurso($txtcodcurso);
                 echo "<h3>".$pro->ExcluirCurso()."</h3>";
@@ -568,7 +599,8 @@
                             <legend><b> Informe o Código da Disciplina desejada: </b></legend>
                             <label for="exampleInputEmail1" class="form-label"> Código da Disciplina: </label>
                             <input class="form-control" name="txtcoddisc" type="text" size="20" maxlength="5"
-                                placeholder="Código da Disciplina">
+                                placeholder="Código da Disciplina"
+                                onkeypress="return blockletras(window.event.keyCode)">
 
                         </div>
                         <br>
@@ -605,7 +637,7 @@
                 <?php
 
 
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\disciplina.php';
+                include_once '..\Models\disciplina.php';
                 $pro = new Disciplina();
                 $pro->setCodDisc($txtcoddisc);
                 echo "<h3>".$pro->ExcluirDisciplina()."</h3>";
@@ -634,7 +666,7 @@
                             <legend><b> Informe o nome do Aluno desejado: </b></legend>
                             <label for="exampleInputEmail1" class="form-label"> Nome: </label>
                             <input class="form-control" name="txtnome" type="text" size="40" maxlength="40"
-                                placeholder="Nome do Aluno">
+                                placeholder="Nome do Aluno" onkeypress="return blocknum(window.event.keyCode)">
 
                         </div>
                         <br>
@@ -665,7 +697,7 @@
 
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btEnviarConAlunos)) {
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\aluno.php';
+                include_once '..\Models\aluno.php';
                 $pro = new Aluno();
                 $pro->setNome($txtnome.'%');
                 $pro_bd=$pro->ConsultarAluno();
@@ -763,7 +795,7 @@
 
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btEnviarConCursos)) {
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\curso.php';
+                include_once '..\Models\curso.php';
                 $pro = new Curso();
                 $pro->setNome($txtnomecurso.'%');
                 $pro_bd=$pro->ConsultarCurso();
@@ -862,7 +894,7 @@
 
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btEnviarConDisciplina)) {
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\disciplina.php';
+                include_once '..\Models\disciplina.php';
                 $pro = new Disciplina();
                 $pro->setNome($txtnomedisc.'%');
                 $pro_bd=$pro->ConsultarDisciplina();
@@ -920,7 +952,7 @@
 
                     <?php
 
-                        include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\aluno.php';
+                        include_once '..\Models\aluno.php';
             $e = new Aluno();
             $esc_bd=$e->ListarAlunos();
 
@@ -979,7 +1011,7 @@
 
                     <?php
 
-                        include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\curso.php';
+                        include_once '..\Models\curso.php';
             $e = new Curso();
             $esc_bd=$e->ListarCurso();
 
@@ -1038,7 +1070,7 @@
 
                     <?php
 
-                        include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\disciplina.php';
+                        include_once '..\Models\disciplina.php';
             $e = new Disciplina();
             $esc_bd=$e->ListarDisciplina();
 
@@ -1095,7 +1127,7 @@
                             <legend><b> Informe a Matrícula do Aluno desejado: </b></legend>
                             <label for="exampleInputEmail1" class="form-label"> Matrícula: </label>
                             <input class="form-control" name="txtmat" type="text" size="20" maxlength="5"
-                                placeholder="Matrícula do Aluno">
+                                placeholder="Matrícula do Aluno" onkeypress="return blockletras(window.event.keyCode)">
 
                         </div>
                         <br>
@@ -1124,7 +1156,7 @@
 
               if (isset($btEnviarAltAluno)) {
                   $txtmat = $_POST['txtmat'];
-                  include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\aluno.php';
+                  include_once '..\Models\aluno.php';
                   $p = new Aluno();
                   $p->setMatricula($txtmat);
                   $pro_bd = $p->alterar();
@@ -1146,6 +1178,7 @@
                         readonly><br>
                     <label for="exampleInputEmail1" class="form-label"> Nome: </label>
                     <input class="form-control" name="txtnome" size="50"
+                        onkeypress="return blocknum(window.event.keyCode)"
                         value='<?php echo $pro_mostrar[1]?>'><br>
                     <label for="exampleInputEmail1" class="form-label"> Endereço: </label>
                     <input class="form-control" name="txtendereco" size="50"
@@ -1155,6 +1188,7 @@
                         value='<?php echo $pro_mostrar[3]?>'><br>
                     <label for="exampleInputEmail1" class="form-label"> Código do Curso: </label>
                     <input class="form-control" name="txtCodCurso" size="2"
+                        onkeypress="return blockletras(window.event.keyCode)"
                         value='<?php echo $pro_mostrar[4]?>'><br>
                     <input type="submit" name="btnAlterarAluno" class="btn btn-secondary" value="Alterar">
 
@@ -1178,7 +1212,7 @@
                 <?php
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btnAlterarAluno)) {
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\aluno.php';
+                include_once '..\Models\aluno.php';
                 $pro = new Aluno();
                 $pro->setMatricula($txtmat);
                 $pro->setNome($txtnome);
@@ -1209,7 +1243,7 @@
                             <legend><b> Informe o Código do Curso desejado: </b></legend>
                             <label for="exampleInputEmail1" class="form-label"> Código do Curso: </label>
                             <input class="form-control" name="txtcodcurso" type="text" size="20" maxlength="5"
-                                placeholder="Código do Curso">
+                                placeholder="Código do Curso" onkeypress="return blockletras(window.event.keyCode)">
 
                         </div>
                         <br>
@@ -1238,7 +1272,7 @@
 
               if (isset($btEnviarAltCurso)) {
                   $txtCodCurso = $_POST['txtcodcurso'];
-                  include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\curso.php';
+                  include_once '..\Models\curso.php';
                   $p = new Curso();
                   $p->setCodCurso($txtCodCurso);
                   $pro_bd=$p->alterar();
@@ -1263,12 +1297,15 @@
                         value='<?php echo $pro_mostrar[1]?>'><br>
                     <label for="exampleInputEmail1" class="form-label"> Disciplina 1: </label>
                     <input class="form-control" name="txtCodDisc1" size="2"
+                        onkeypress="return blockletras(window.event.keyCode)"
                         value='<?php echo $pro_mostrar[2]?>'><br>
                     <label for="exampleInputEmail1" class="form-label"> Disciplina 2: </label>
                     <input class="form-control" name="txtCodDisc2" size="2"
+                        onkeypress="return blockletras(window.event.keyCode)"
                         value='<?php echo $pro_mostrar[3]?>'><br>
                     <label for="exampleInputEmail1" class="form-label"> Disciplina 3: </label>
                     <input class="form-control" name="txtCodDisc3" size="2"
+                        onkeypress="return blockletras(window.event.keyCode)"
                         value='<?php echo $pro_mostrar[4]?>'><br>
                     <input type="submit" name="btnAlterarCurso" class="btn btn-secondary" value="Alterar">
 
@@ -1292,7 +1329,7 @@
                 <?php
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btnAlterarCurso)) {
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\curso.php';
+                include_once '..\Models\curso.php';
                 $pro = new Curso();
                 $pro->setCodCurso($txtCodCurso);
                 $pro->setNome($txtnome);
@@ -1323,7 +1360,8 @@
                             <legend><b> Informe o Código da Disciplina desejada: </b></legend>
                             <label for="exampleInputEmail1" class="form-label"> Código da Disciplina: </label>
                             <input class="form-control" name="txtcoddisc" type="text" size="20" maxlength="5"
-                                placeholder="Código da Disciplina">
+                                placeholder="Código da Disciplina"
+                                onkeypress="return blockletras(window.event.keyCode)">
 
                         </div>
                         <br>
@@ -1353,7 +1391,7 @@
 
               if (isset($btEnviarAltDisciplina)) {
                   $txtCodDisc = $_POST['txtcoddisc'];
-                  include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\disciplina.php';
+                  include_once '..\Models\disciplina.php';
                   $p = new Disciplina();
                   $p->setCodDisc($txtCodDisc);
                   $pro_bd=$p->alterar();
@@ -1398,7 +1436,7 @@
                 <?php
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btnAlterarDisciplina)) {
-                include_once 'C:\xampp\htdocs\Acesso_BD\BD_Escola\Models\disciplina.php';
+                include_once '..\Models\disciplina.php';
                 $pro = new Disciplina();
                 $pro->setCodDisc($txtCodDisc);
                 $pro->setNome($txtnome);

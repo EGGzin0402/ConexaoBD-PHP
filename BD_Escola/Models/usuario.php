@@ -1,6 +1,6 @@
 <?php
 
-include_once 'c:\xampp\htdocs\Acesso_BD\BD_Produto\Controler\conectar.php';
+include_once '..\Controler\conectar.php';
 
 class Usuario
 {
@@ -43,5 +43,3 @@ class Usuario
         }
     }
 }
-
-?>

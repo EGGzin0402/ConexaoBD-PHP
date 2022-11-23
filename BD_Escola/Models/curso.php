@@ -1,6 +1,6 @@
 <?php
 
-include_once "c:\\xampp\htdocs\Acesso_BD\BD_Escola\Controler\conectar.php";
+include_once "..\Controler\conectar.php";
 
 class Curso
 {

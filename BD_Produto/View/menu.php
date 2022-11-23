@@ -17,6 +17,36 @@
     </script>
     <script sr c="https://code.jquery.com/jquery-3.0.0.min.js%22%3E"></script>
 
+    <script language="javascript">
+      function blockletras(keypress) {
+
+        if (keypress >= 48 && keypress <= 57) {
+
+          return true;
+
+        } else {
+
+          return false;
+
+        }
+
+      }
+
+      function blocknum(keypress) {
+
+        if (keypress >= 48 && keypress <= 57) {
+
+          return false;
+
+        } else {
+
+          return true;
+
+        }
+
+      }
+    </script>
+
   </head>
 
   <body>
@@ -95,10 +125,11 @@
               <legend><b> Dados do Produto: </b></legend>
               <label for="exampleInputEmail1" class="form-label"> Nome: </label>
               <input class="form-control" name="txtnomecad" type="text" size="40" maxlength="40"
-                placeholder="Nome do produto">
+                placeholder="Nome do produto" onkeypress="return blocknum(window.event.keyCode)">
               <br>
               <label for="exampleInputEmail1" class="form-label"> Estoque: </label>
-              <input class="form-control" name="txtestoq" type="text" size="10" placeholder="0">
+              <input class="form-control" name="txtestoq" type="text" size="10" placeholder="0"
+                onkeypress="return blockletras(window.event.keyCode)">
 
             </div>
 
@@ -134,7 +165,7 @@
 
       <?php
 
-            include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+            include_once '..\Models\produto.php';
           $pro = new Produto();
           $pro->setNome($txtnomecad);
           $pro->setEstoque($txtestoq);
@@ -160,7 +191,7 @@
               <legend><b> Informe o ID do produto desejado: </b></legend>
               <label for="exampleInputEmail1" class="form-label"> ID: </label>
               <input class="form-control" name="txtIDexc" type="text" size="40" maxlength="40"
-                placeholder="ID do produto">
+                placeholder="ID do produto" onkeypress="return blockletras(window.event.keyCode)">
 
             </div>
             <br>
@@ -194,7 +225,7 @@
         <legend><b> Resultado do Excluir: </b></legend>
 
         <?php
-          include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+          include_once '..\Models\produto.php';
 
           $pro = new Produto();
           $pro->setId($txtIDexc);
@@ -222,7 +253,7 @@
               <legend><b> Informe o nome do produto desejado: </b></legend>
               <label for="exampleInputEmail1" class="form-label"> Nome: </label>
               <input class="form-control" name="txtnomecons" type="text" size="40" maxlength="40"
-                placeholder="Nome do produto">
+                placeholder="Nome do produto" onkeypress="return blocknum(window.event.keyCode)">
 
             </div>
             <br>
@@ -253,7 +284,7 @@
 
             extract($_POST, EXTR_OVERWRITE);
       if (isset($btenviarcon)) {
-          include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+          include_once '..\Models\produto.php';
           $pro = new Produto();
           $pro->setNome($txtnomecons . '%');
           $pro_bd = $pro->Consultar();
@@ -313,7 +344,7 @@
 
           <?php
 
-      include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+      include_once '..\Models\produto.php';
       $p = new Produto();
       $pro_bd = $p->Listar();
 
@@ -396,7 +427,7 @@
 
               if (isset($btenviaralt)) {
                   $txtid = $_POST['txtidalt1'];
-                  include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+                  include_once '..\Models\produto.php';
                   $p = new Produto();
                   $p->setId($txtid);
                   $pro_bd = $p->alterar();
@@ -414,13 +445,16 @@
 
           <label for="exampleInputEmail1" class="form-label"> ID: </label>
           <input class="form-control" name="txtidalt2" type="text" size="5"
-            value='<?php echo $pro_mostrar[0]?>' readonly><br>
+            value='<?php echo $pro_mostrar[0]?>' readonly
+            onkeypress="return blockletras(window.event.keyCode)"><br>
           <label for="exampleInputEmail1" class="form-label"> Nome: </label>
           <input class="form-control" name="txtnome" type="text" size="40" maxlength="40"
-            value='<?php echo $pro_mostrar[1]?>'><br>
+            value='<?php echo $pro_mostrar[1]?>'
+            onkeypress="return blocknum(window.event.keyCode)"><br>
           <label for="exampleInputEmail1" class="form-label"> Estoque: </label>
           <input class="form-control" name="txtestoq" type="text" size="25" maxlength="40"
-            value='<?php echo $pro_mostrar[2]?>'><br>
+            value='<?php echo $pro_mostrar[2]?>'
+            onkeypress="return blockletras(window.event.keyCode)"><br>
           <input type="submit" name="btnalterar" class="btn btn-success" value="Alterar">
 
           <?php
@@ -443,7 +477,7 @@
         <?php
       extract($_POST, EXTR_OVERWRITE);
       if (isset($btnalterar)) {
-          include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\produto.php';
+          include_once '..\Models\produto.php';
           $pro = new Produto();
           $pro->setNome($txtnome);
           $pro->setEstoque($txtestoq);

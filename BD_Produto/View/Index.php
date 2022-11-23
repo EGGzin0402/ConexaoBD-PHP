@@ -85,7 +85,7 @@
 
             extract($_POST, EXTR_OVERWRITE);
                 if (isset($btlogar)) {
-                    include_once 'C:\xampp\htdocs\Acesso_BD\BD_Produto\Models\usuario.php';
+                    include_once '..\Models\usuario.php';
                     $u = new Usuario();
                     $u->setLogin($txtusu);
                     $u->setSenha($txtsenha);

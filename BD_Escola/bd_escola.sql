@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15-Ago-2022 às 21:36
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.0.13
+-- Tempo de geração: 23-Nov-2022 às 02:56
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `bd_escola`
 --
-
-CREATE DATABASE `bd_escola`;
+CREATE DATABASE IF NOT EXISTS `bd_escola` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `bd_escola`;
 
 -- --------------------------------------------------------
@@ -43,7 +42,7 @@ CREATE TABLE `alunos` (
 --
 
 INSERT INTO `alunos` (`Matricula`, `Nome`, `Endereco`, `Cidade`, `CodCurso`) VALUES
-('10001', 'Marcos Moares', 'Rua Pe Roque, 2057', 'Mogi Mirim', '01'),
+('10001', 'Marcos Moares Lima', 'Rua Pe Roque, 2057', 'Mogi Mirim', '01'),
 ('10002', 'Maria Conceição Lopes', 'Rua Araras, 23', 'Mogi Guaçu', '01'),
 ('10003', 'Ana Carina Lopes', 'Rua Peraltas, 222', 'Santos', '01'),
 ('10004', 'Carlos Aguiar', 'Rua Botafogo, 33', 'Santos', '01'),
@@ -57,8 +56,7 @@ INSERT INTO `alunos` (`Matricula`, `Nome`, `Endereco`, `Cidade`, `CodCurso`) VAL
 ('10012', 'Richardson S. P. Campeao', 'Rua do Tricolor, 433', 'São Paulo', '03'),
 ('10013', 'Junior Camisa Seis', 'Rua do Morumbi, 433', 'São Paulo', '03'),
 ('10014', 'Carina Melo', 'Rua Osvaldo Ramos, 88', 'Mogi Guaçu', '03'),
-('10015', 'Pedro Mello', 'Rua Itororó, 3999', 'Mogi Mirim', '03'),
-('10016', 'Andrei Luiz Florêncio', 'Rua dos Limões, 167', 'São Paulo', '01');
+('10015', 'Pedro Mello', 'Rua Itororó, 4000', 'Mogi Mirim', '03');
 
 -- --------------------------------------------------------
 
@@ -67,7 +65,7 @@ INSERT INTO `alunos` (`Matricula`, `Nome`, `Endereco`, `Cidade`, `CodCurso`) VAL
 --
 
 CREATE TABLE `cursos` (
-  `CodCurso` int(2) NOT NULL,
+  `CodCurso` char(2) NOT NULL,
   `Nome` varchar(50) NOT NULL,
   `CodDisc1` char(2) NOT NULL,
   `CodDisc2` char(2) NOT NULL,
@@ -79,9 +77,9 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`CodCurso`, `Nome`, `CodDisc1`, `CodDisc2`, `CodDisc3`) VALUES
-(1, 'Auxiliar de Informática', '11', '12', '13'),
-(2, 'Programador de Computadores', '21', '22', '23'),
-(3, 'Técnico em informática', '31', '32', '33');
+('01', 'Auxiliar de Informática', '11', '12', '13'),
+('02', 'Programador de Computadores', '21', '22', '23'),
+('03', 'Técnico em Informática', '31', '32', '33');
 
 -- --------------------------------------------------------
 
@@ -107,8 +105,26 @@ INSERT INTO `disciplinas` (`CodDisciplina`, `NomeDisciplina`) VALUES
 ('23', 'Programação de Computadores 1'),
 ('31', 'Banco de Dados 3'),
 ('32', 'Programação de Computadores 2'),
-('33', 'Desenvolvimento de Software 3'),
-('41', 'Programação Web');
+('33', 'Desenvolvimento de Software 3');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `Login` varchar(5) NOT NULL,
+  `Senha` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`Login`, `Senha`) VALUES
+('a', 123),
+('b', 456);
 
 --
 -- Índices para tabelas despejadas
@@ -131,16 +147,6 @@ ALTER TABLE `cursos`
 --
 ALTER TABLE `disciplinas`
   ADD PRIMARY KEY (`CodDisciplina`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `cursos`
---
-ALTER TABLE `cursos`
-  MODIFY `CodCurso` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
