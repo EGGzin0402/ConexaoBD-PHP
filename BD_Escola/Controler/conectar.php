@@ -4,28 +4,15 @@ class Conectar extends PDO
 {
     private static $instancia;
     private $query;
+    private $host = "us-cdbr-east-06.cleardb.net";
+    private $usuario = "bd5ed7eaf61adf";
+    private $senha = "84ca6210";
+    private $db = "heroku_df28610eabc2cf1";
 
-    protected $mysqli;
-    
-    define('BD_SERVIDOR', 'us-cdbr-east-06.cleardb.net');
-    define('BD_USUARIO', 'bd5ed7eaf61adf');
-    define('BD_SENHA', '84ca6210');
-    define('BD_BANCO', 'heroku_df28610eabc2cf1');
-
-
-    public function __construct(){
-        $this->conexao();
-        $this->mysqli->query("SET NAMES 'utf8'");
-        $this->mysqli->query('SET character_set_connection=utf8');
-        $this->mysqli->query('SET character_set_client=utf8');
-        $this->mysqli->query('SET character_set_results=utf8');
+    public function __construct()
+    {
+        parent::__construct("mysql:host=$this->host;dbname=$this->db", "$this->usuario", "$this->senha");
     }
-
-    private function conexao(){
-        $this->mysqli = new mysqli(BD_SERVIDOR, BD_USUARIO , BD_SENHA, BD_BANCO);
-        
-    }
-    
     public static function getInstance()
     {
         if (!isset(self::$instancia)) {
