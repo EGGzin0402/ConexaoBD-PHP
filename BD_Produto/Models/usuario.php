@@ -1,6 +1,6 @@
 <?php
 
-include_once '..\Controler\conectar.php';
+include_once 'conectar.php';
 
 class Usuario
 {
