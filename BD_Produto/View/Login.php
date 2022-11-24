@@ -74,7 +74,7 @@
 
                         <legend><b> Opções: </b></legend>
                         <br><br>
-                        <button name="btlogar" type="submit" class="btn btn-success">Login</button>
+                        <button name="btlogar" class="btn btn-success">Login</button>
                         <button type="reset" class="btn btn-primary">Limpar</button>
 
                     </div>

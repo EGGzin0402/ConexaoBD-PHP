@@ -11,7 +11,7 @@ class Conectar extends PDO
 
     public function __construct()
     {
-        parent::__construct("mysql:host=$this->host;dbname=$this->db", "$this->usuario", "$this->senha");
+        parent::__construct("$this->host", "$this->usuario", "$this->senha", "$this->db");
     }
     public static function getInstance()
     {
