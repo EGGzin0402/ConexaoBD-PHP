@@ -4,6 +4,8 @@ class Conectar extends PDO
 {
     private static $instancia;
     private $query;
+
+    protected $mysqli;
     
     define('BD_SERVIDOR', 'us-cdbr-east-06.cleardb.net');
     define('BD_USUARIO', 'bd5ed7eaf61adf');
