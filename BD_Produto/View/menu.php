@@ -165,7 +165,7 @@
 
       <?php
 
-            include_once 'produto.php';
+            include_once '..\models\produto.php';
           $pro = new Produto();
           $pro->setNome($txtnomecad);
           $pro->setEstoque($txtestoq);
@@ -225,7 +225,7 @@
         <legend><b> Resultado do Excluir: </b></legend>
 
         <?php
-          include_once 'produto.php';
+          include_once '..\models\produto.php';
 
           $pro = new Produto();
           $pro->setId($txtIDexc);
@@ -284,7 +284,7 @@
 
             extract($_POST, EXTR_OVERWRITE);
       if (isset($btenviarcon)) {
-          include_once 'produto.php';
+          include_once '..\models\produto.php';
           $pro = new Produto();
           $pro->setNome($txtnomecons . '%');
           $pro_bd = $pro->Consultar();
@@ -344,7 +344,7 @@
 
           <?php
 
-      include_once 'produto.php';
+      include_once '..\models\produto.php';
       $p = new Produto();
       $pro_bd = $p->Listar();
 
@@ -427,7 +427,7 @@
 
               if (isset($btenviaralt)) {
                   $txtid = $_POST['txtidalt1'];
-                  include_once 'produto.php';
+                  include_once '..\models\produto.php';
                   $p = new Produto();
                   $p->setId($txtid);
                   $pro_bd = $p->alterar();
@@ -477,7 +477,7 @@
         <?php
       extract($_POST, EXTR_OVERWRITE);
       if (isset($btnalterar)) {
-          include_once 'produto.php';
+          include_once '..\models\produto.php';
           $pro = new Produto();
           $pro->setNome($txtnome);
           $pro->setEstoque($txtestoq);
