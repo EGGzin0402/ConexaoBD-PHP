@@ -299,7 +299,7 @@
             <?php
 
 
-                include_once 'bd_escola/models/aluno.php';
+                include_once 'BD_Escola/models/aluno.php';
                 $pro = new Aluno();
                 $pro->setMatricula($txtmat);
                 $pro->setNome($txtnome);
@@ -376,7 +376,7 @@
 
             <?php
 
-                include_once 'bd_escola/models/curso.php';
+                include_once 'BD_Escola/models/curso.php';
                 $pro = new Curso();
                 $pro->setNome($txtnomecurso);
                 $pro->setCodDisc1($txtcoddisc1);
@@ -446,7 +446,7 @@
             <?php
 
 
-                include_once 'bd_escola/models/disciplina.php';
+                include_once 'BD_Escola/models/disciplina.php';
                 $pro = new Disciplina();
                 $pro->setCodDisc($txtcoddisc);
                 $pro->setNome($txtnomedisc);
@@ -509,7 +509,7 @@
 
                 <?php
 
-                include_once 'bd_escola/models/aluno.php';
+                include_once 'BD_Escola/models/aluno.php';
                 $pro = new Aluno();
                 $pro->setMatricula($txtmat);
                 echo "<h3>".$pro->ExcluirAluno()."</h3>";
@@ -572,7 +572,7 @@
                 <?php
 
 
-                include_once 'bd_escola/models/curso.php';
+                include_once 'BD_Escola/models/curso.php';
                 $pro = new Curso();
                 $pro->setCodCurso($txtcodcurso);
                 echo "<h3>".$pro->ExcluirCurso()."</h3>";
@@ -637,7 +637,7 @@
                 <?php
 
 
-                include_once 'bd_escola/models/disciplina.php';
+                include_once 'BD_Escola/models/disciplina.php';
                 $pro = new Disciplina();
                 $pro->setCodDisc($txtcoddisc);
                 echo "<h3>".$pro->ExcluirDisciplina()."</h3>";
@@ -697,7 +697,7 @@
 
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btEnviarConAlunos)) {
-                include_once 'bd_escola/models/aluno.php';
+                include_once 'BD_Escola/models/aluno.php';
                 $pro = new Aluno();
                 $pro->setNome($txtnome.'%');
                 $pro_bd=$pro->ConsultarAluno();
@@ -795,7 +795,7 @@
 
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btEnviarConCursos)) {
-                include_once 'bd_escola/models/curso.php';
+                include_once 'BD_Escola/models/curso.php';
                 $pro = new Curso();
                 $pro->setNome($txtnomecurso.'%');
                 $pro_bd=$pro->ConsultarCurso();
@@ -894,7 +894,7 @@
 
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btEnviarConDisciplina)) {
-                include_once 'bd_escola/models/disciplina.php';
+                include_once 'BD_Escola/models/disciplina.php';
                 $pro = new Disciplina();
                 $pro->setNome($txtnomedisc.'%');
                 $pro_bd=$pro->ConsultarDisciplina();
@@ -952,7 +952,7 @@
 
                     <?php
 
-                        include_once 'bd_escola/models/aluno.php';
+                        include_once 'BD_Escola/models/aluno.php';
             $e = new Aluno();
             $esc_bd=$e->ListarAlunos();
 
@@ -1011,7 +1011,7 @@
 
                     <?php
 
-                        include_once 'bd_escola/models/curso.php';
+                        include_once 'BD_Escola/models/curso.php';
             $e = new Curso();
             $esc_bd=$e->ListarCurso();
 
@@ -1070,7 +1070,7 @@
 
                     <?php
 
-                        include_once 'bd_escola/models/disciplina.php';
+                        include_once 'BD_Escola/models/disciplina.php';
             $e = new Disciplina();
             $esc_bd=$e->ListarDisciplina();
 
@@ -1156,7 +1156,7 @@
 
               if (isset($btEnviarAltAluno)) {
                   $txtmat = $_POST['txtmat'];
-                  include_once 'bd_escola/models/aluno.php';
+                  include_once 'BD_Escola/models/aluno.php';
                   $p = new Aluno();
                   $p->setMatricula($txtmat);
                   $pro_bd = $p->alterar();
@@ -1212,7 +1212,7 @@
                 <?php
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btnAlterarAluno)) {
-                include_once 'bd_escola/models/aluno.php';
+                include_once 'BD_Escola/models/aluno.php';
                 $pro = new Aluno();
                 $pro->setMatricula($txtmat);
                 $pro->setNome($txtnome);
@@ -1272,7 +1272,7 @@
 
               if (isset($btEnviarAltCurso)) {
                   $txtCodCurso = $_POST['txtcodcurso'];
-                  include_once 'bd_escola/models/curso.php';
+                  include_once 'BD_Escola/models/curso.php';
                   $p = new Curso();
                   $p->setCodCurso($txtCodCurso);
                   $pro_bd=$p->alterar();
@@ -1329,7 +1329,7 @@
                 <?php
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btnAlterarCurso)) {
-                include_once 'bd_escola/models/curso.php';
+                include_once 'BD_Escola/models/curso.php';
                 $pro = new Curso();
                 $pro->setCodCurso($txtCodCurso);
                 $pro->setNome($txtnome);
@@ -1391,7 +1391,7 @@
 
               if (isset($btEnviarAltDisciplina)) {
                   $txtCodDisc = $_POST['txtcoddisc'];
-                  include_once 'bd_escola/models/disciplina.php';
+                  include_once 'BD_Escola/models/disciplina.php';
                   $p = new Disciplina();
                   $p->setCodDisc($txtCodDisc);
                   $pro_bd=$p->alterar();
@@ -1436,7 +1436,7 @@
                 <?php
             extract($_POST, EXTR_OVERWRITE);
             if (isset($btnAlterarDisciplina)) {
-                include_once 'bd_escola/models/disciplina.php';
+                include_once 'BD_Escola/models/disciplina.php';
                 $pro = new Disciplina();
                 $pro->setCodDisc($txtCodDisc);
                 $pro->setNome($txtnome);
