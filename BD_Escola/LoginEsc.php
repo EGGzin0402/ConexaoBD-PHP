@@ -85,7 +85,7 @@
 
             extract($_POST, EXTR_OVERWRITE);
                 if (isset($btlogar)) {
-                    include_once 'models\usuario.php';
+                    include_once 'bd_escola/models/usuario.php';
                     $u = new Usuario();
                     $u->setLogin($txtusu);
                     $u->setSenha($txtsenha);
