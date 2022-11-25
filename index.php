@@ -21,9 +21,9 @@
     <body>
 
         <h1>Para qual site deseja ir?</h1>
-        <a href="BD_Produto/View/Login.php"><button name="btproduto" type="submit"
+        <a href="BD_Produto/Login.php"><button name="btproduto" type="submit"
                 class="btn btn-success">Produto</button></a>
-        <a href="BD_Escola/View/LoginEsc.php"><button name="btescola" type="submit"
+        <a href="BD_Escola/LoginEsc.php"><button name="btescola" type="submit"
                 class="btn btn-dark">Escola</button></a>
 
     </body>
